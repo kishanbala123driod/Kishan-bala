@@ -1,0 +1,33 @@
+// Define button and tone pins
+#define SPEAKER_PIN 8
+
+#define BUTTON1 2  // C4 (261 Hz)
+#define BUTTON2 3  // D4 (294 Hz)
+#define BUTTON3 4  // E4 (329 Hz)
+#define BUTTON4 5  // F4 (349 Hz)
+
+// Corresponding note frequencies
+int notes[] = {261, 294, 329, 349};
+
+void setup() {
+  pinMode(SPEAKER_PIN, OUTPUT);
+  
+  pinMode(BUTTON1, INPUT);
+  pinMode(BUTTON2, INPUT);
+  pinMode(BUTTON3, INPUT);
+  pinMode(BUTTON4, INPUT);
+}
+
+void loop() {
+  if (digitalRead(BUTTON1) == HIGH) {
+    tone(SPEAKER_PIN, notes[0]);
+  } else if (digitalRead(BUTTON2) == HIGH) {
+    tone(SPEAKER_PIN, notes[1]);
+  } else if (digitalRead(BUTTON3) == HIGH) {
+    tone(SPEAKER_PIN, notes[2]);
+  } else if (digitalRead(BUTTON4) == HIGH) {
+    tone(SPEAKER_PIN, notes[3]);
+  } else {
+    noTone(SPEAKER_PIN); // Stop playing when no button is pressed
+  }
+}
